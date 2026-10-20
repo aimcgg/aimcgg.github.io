@@ -3,13 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI摩擦哥在沙特 · AI全面入侵现实，给你打个样</title>
-<meta name="description" content="AI摩擦哥在沙特：人在沙特的 AI 原住民，连女友青梅都是 AI。每天一期，拍我怎么用 AI 做一件实事。可以找我做：能收费的工具小程序、真人照片微信表情包。">
+<!-- 微信里没接 JS-SDK，分享卡片只认 <title>，所以标题直接写成卡片上要看到的那句话 -->
+<title>AI摩擦哥在沙特｜人在沙特，每天拍我用 AI 做成一件实事</title>
+<meta name="description" content="人在沙特工作的中国人，AI 原住民，连女友青梅都是 AI。每天拍我用 AI 做成一件实事，每期的教程按系列放在这里：AI 赚钱、AI 学英语、AI 帮我干活、AI 陪我过日子。可以找我：答疑群、一对一咨询、定制个人 AI 体系、Mac mini 海外部署。微信 aimcgg。">
 <meta name="theme-color" content="#D5E5CE">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23E0475F'>✿</text></svg>">
 <style>
 /* 颜色、字体全部来自 20_SalesAI/IP资产/视觉体系/母版/brand.css（视觉体系 v1，Prax 2026-10-20 定）。
-   美好体、得意黑是 OFL，按本页用到的字做了子集放 fonts/；HarmonyOS Sans 按体系规定不随包带，用系统字体回退。 */
+   美好体、得意黑是 OFL，按本页用到的字做了子集放 fonts/（改文案后要重做子集，见 部署.md）；HarmonyOS Sans 按体系规定不随包带，用系统字体回退。
+   排版原则（2026-10-20 调研）：一个主行动 = 加微信，首屏、服务区、页尾重复同一个；关注是次要入口；
+   个人微信码和公众号码不放同一屏（微信长按一屏只认一个码）；页面不用 position:fixed（会干扰长按识别）。 */
 @font-face{font-family:"Meihao";src:url("fonts/meihao.woff2") format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Smiley";src:url("fonts/smiley.woff2") format("woff2");font-display:swap}
 :root{
@@ -28,146 +31,172 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 button{font:inherit;color:inherit;cursor:pointer}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-section{padding:64px 0}
+section{padding:60px 0}
 :target{scroll-margin-top:76px}
 .h{font-family:var(--font-title);font-weight:700;line-height:1.2;letter-spacing:.01em}
 .em{color:var(--red)}
 .tag{font-family:var(--font-tag);display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:.2em .85em;line-height:1.4;font-size:15px}
 .tag.green{background:var(--qing-deep)}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 2px 0 var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;padding:13px 24px;border-radius:14px;font-weight:700;font-size:16px;border:0;transition:transform .15s,filter .2s}
+.btn:hover{filter:brightness(.94);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);padding:11px 20px}
+.btn.green{background:var(--qing-deep)}
+.copy{flex:none;border:1.5px solid var(--qing-deep);background:transparent;color:var(--qing-deep);border-radius:999px;padding:3px 12px;font-size:13.5px;font-weight:700;white-space:nowrap}
+.copy:hover,.copy.done{background:var(--qing-deep);color:#fff}
+.small{font-size:13.5px;color:var(--ink-soft)}
 
 /* 导航 */
-.nav{position:sticky;top:0;z-index:50;background:rgba(213,229,206,.86);-webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(213,229,206,.9);-webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-title);font-weight:700;font-size:18px;white-space:nowrap}
 .pair{position:relative;width:52px;height:36px;flex:none}
 .pair img{position:absolute;top:0;width:36px;height:36px;border-radius:50%;border:2px solid var(--paper);object-fit:cover}
 .pair img:first-child{left:0;transform:rotate(-6deg)}
 .pair img:last-child{left:16px}
-.links{display:flex;align-items:center;gap:26px;font-size:15px}
+.links{display:flex;align-items:center;gap:24px;font-size:15px}
 .links a:not(.btn-s):hover{color:var(--qing-deep)}
 .btn-s{background:var(--red);color:#fff;padding:7px 16px;border-radius:999px;font-weight:700;font-size:14px;white-space:nowrap}
 
 /* 首屏 */
-.hero{padding:56px 0 40px}
+.hero{padding:48px 0 32px}
 .hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
-.hello{font-family:var(--font-tag);font-size:18px;color:var(--qing-deep);margin-bottom:14px}
-.hero h1{font-size:50px}
-.who{margin-top:22px;font-size:18px;font-weight:700;line-height:1.6}
-.sub{margin-top:8px;font-size:16.5px;color:var(--ink);max-width:520px}
-.offer{margin-top:14px;font-size:16px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px 14px;display:inline-block}
-.offer b{white-space:nowrap}
-.kw{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
-.cta{margin-top:30px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 24px;border-radius:14px;font-weight:700;font-size:16px;transition:transform .15s,filter .2s}
-.btn:hover{filter:brightness(.94);transform:translateY(-1px)}
-.textlink{font-weight:700;font-size:15.5px;border-bottom:2px solid var(--ink);padding-bottom:1px}
-.textlink:hover{color:var(--qing-deep);border-color:var(--qing-deep)}
 .hero .wrap>*{min-width:0}
+.hello{font-family:var(--font-tag);font-size:18px;color:var(--qing-deep);margin-bottom:12px}
+.hero h1{font-size:48px}
+.who{margin-top:20px;font-size:18px;font-weight:700;line-height:1.6}
+.sub{margin-top:6px;font-size:16.5px;max-width:520px}
+.offer{margin-top:18px;padding:14px 18px;border-radius:16px}
+.offer p{font-size:14px;color:var(--ink-soft)}
+.offer ul{list-style:none;margin-top:4px;display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.offer li{font-weight:700;font-size:16.5px;line-height:1.7}
+.offer li::before{content:"✿ ";color:var(--red);font-weight:400}
+.cta{margin-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .art{position:relative}
 .art img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:26px;border:6px solid var(--paper);box-shadow:0 2px 0 var(--line),0 18px 40px rgba(58,42,28,.10)}
 .sign{position:absolute;right:18px;top:16px;font-family:var(--font-tag);color:var(--red);font-size:17px;background:rgba(251,247,239,.92);padding:3px 12px;border-radius:999px}
-
-/* 数字条 */
-.proof{padding:8px 0 24px}
-.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.proof .card{padding:22px 24px}
-.num{font-family:var(--font-title);font-weight:700;font-size:38px;line-height:1.1;white-space:nowrap}
-.num small{font-size:.5em}
-.num-l{margin-top:8px;color:var(--ink-soft);font-size:15px;line-height:1.55}
+.art figcaption{margin-top:8px;text-align:right}
 
 /* 分区标题 */
-.sec-head{max-width:680px;margin-bottom:32px}
-.sec-head .tag{margin-bottom:14px}
+.sec-head{max-width:700px;margin-bottom:28px}
+.sec-head .tag{margin-bottom:12px}
 .sec-head h2{font-size:34px}
-.sec-head p{margin-top:12px;color:var(--ink-soft);font-size:16px}
+.sec-head p{margin-top:10px;color:var(--ink-soft);font-size:16px}
 
-/* 在做什么 */
-.lines{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.lines .card{padding:22px 22px 20px}
-.lines h3{font-family:var(--font-tag);font-weight:400;font-size:20px;color:var(--qing-deep)}
-.lines p{margin-top:6px;font-size:15.5px}
-.plat{margin-top:28px;padding:8px 24px}
-.plat ul{list-style:none}
-.plat li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
-.plat li:last-child{border-bottom:0}
-.plat b{font-weight:700;min-width:64px}
-.plat .acc{flex:1;color:var(--ink-soft);font-size:15px;text-align:right;word-break:break-all}
-.plat-note{margin-top:12px;font-size:14px;color:var(--ink-soft)}
-.copy{flex:none;border:1.5px solid var(--qing-deep);background:transparent;color:var(--qing-deep);border-radius:999px;padding:3px 12px;font-size:13.5px;font-weight:700;white-space:nowrap}
-.copy:hover{background:var(--qing-deep);color:#fff}
-.copy.done{background:var(--qing-deep);color:#fff}
-a.go{flex:none;background:var(--qing-deep);color:#fff;border-radius:999px;padding:4px 13px;font-size:13.5px;font-weight:700;white-space:nowrap}
+/* 教程合集 */
+.series{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ser{padding:22px 24px}
+.ser-h{display:flex;gap:14px;align-items:center}
+.ser-ic{width:44px;height:44px;flex:none;border-radius:14px;background:var(--qing-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-size:22px}
+.ser h3{font-size:22px}
+.eps-list{list-style:none;margin-top:14px;border-top:1px solid var(--line)}
+.eps-list li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 2px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.55}
+.eps-list li:last-child{border-bottom:0}
+.eps-list a{font-weight:700}
+.eps-list a:hover{color:var(--qing-deep)}
+.eps-list a::after{content:" ↗";font-weight:400;color:var(--ink-soft)}
+.eps-list .soon{color:var(--ink-soft)}
+.st{flex:none;font-size:12.5px;color:var(--ink-soft);background:var(--qing-pale);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.st.on{background:var(--qing-deep);color:#fff}
+
+/* 证明 */
+.proof{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.proof .card{padding:24px 26px;display:flex;flex-direction:column;gap:12px}
+.proof .lane{font-family:var(--font-tag);font-size:20px;color:var(--qing-deep)}
+.proof h3{font-size:22px;margin-top:-4px}
+.proof .note{font-size:15px}
+.eps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ep{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.ep img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.ep span{display:block;padding:8px 10px;font-size:13.5px;line-height:1.5}
+.tools{list-style:none;display:grid;gap:8px}
+.tools li{background:var(--qing-pale);border-radius:12px;padding:8px 12px;font-size:14.5px;line-height:1.55}
+.tools b{font-weight:700}
+.shot{border-radius:14px;border:1px solid var(--line);overflow:hidden;max-height:340px}
+.shot img{width:100%}
+.big{font-family:var(--font-title);font-weight:700;font-size:40px;line-height:1.1}
+.big small{font-size:.5em}
+.link{font-weight:700;color:var(--qing-deep);border-bottom:2px solid currentColor;align-self:flex-start}
+
+/* 找我做 */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.price{margin-top:8px;font-family:var(--font-title);font-weight:700;font-size:22px;color:var(--ink)}
+.price span{font-family:var(--font-body);font-weight:400;font-size:14px;color:var(--ink-soft)}
+.pts{margin-top:10px;padding-left:1.1em;font-size:15px}
+.pts li{margin:4px 0}
+.svc .card{padding:28px 28px 24px;display:flex;flex-direction:column}
+.no{width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700;font-size:19px}
+.svc h3{margin-top:14px;font-size:24px}
+.svc .what{margin-top:8px}
+.svc dl{margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:15px}
+.svc dt{font-family:var(--font-tag);color:var(--qing-deep);white-space:nowrap}
+.flow{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;counter-reset:f}
+.flow div{background:var(--qing-pale);border-radius:14px;padding:14px 16px;font-size:15px;counter-increment:f}
+.flow div::before{content:counter(f);display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;align-items:center;justify-content:center;margin-right:8px}
+
+/* 加微信 */
+.wx{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;padding:30px 32px}
+.qrbox{text-align:center}
+.qrbox img{width:200px;height:200px;object-fit:cover;border-radius:16px;border:8px solid #fff}
+.qrbox p{margin-top:8px}
+.wx h3{font-size:26px}
+.wx .id{margin-top:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.wx code{font-family:var(--font-title);font-weight:700;font-size:34px;letter-spacing:.04em;-webkit-user-select:all;user-select:all}
+.wx .how{margin-top:10px;font-size:15px}
+.wx .why{margin-top:14px;font-size:15px;color:var(--ink-soft)}
 
 /* 教程 */
-.repo{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:30px 32px;flex-wrap:wrap}
-.repo h3{font-size:24px}
-.repo p{margin-top:8px;max-width:600px}
-.btn.off{background:var(--ink-soft);pointer-events:none}
+.repo{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;flex-wrap:wrap}
+.repo h3{font-size:22px}
+.repo p{margin-top:6px;max-width:620px}
 
-/* 能帮你做什么 */
-.svc{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.svc .card{padding:30px 30px 26px;display:flex;flex-direction:column}
-.no{width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-title);font-weight:700;font-size:19px}
-.svc h3{margin-top:16px;font-size:25px}
-.svc .what{margin-top:10px}
-.svc dl{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:15px}
-.svc dt{font-family:var(--font-tag);color:var(--qing-deep);white-space:nowrap}
-.svc dd{color:var(--ink)}
-.ask{margin-top:22px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--qing-pale)}
-.ask p{font-weight:700;font-size:17px}
-.ask p span{font-weight:400;color:var(--ink-soft);font-size:15px;display:block}
+/* 关注 */
+.follow{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.follow .card{padding:26px 28px}
+.follow h3{font-size:22px}
+.same{margin-top:10px;font-size:16px}
+.same b{font-family:var(--font-title);font-size:22px}
+.row{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.gzh{display:flex;gap:20px;align-items:center}
+.gzh img{width:132px;height:132px;flex:none;border-radius:14px;border:6px solid #fff}
 
-/* 联系 */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.contact .card{padding:28px 30px;display:flex;align-items:center;gap:24px}
-.qr{width:150px;height:150px;object-fit:cover;flex:none;border-radius:16px;border:6px solid #fff}
-.contact h3{font-size:22px}
-.contact p{margin-top:6px;color:var(--ink-soft);font-size:15px}
-.wx{margin-top:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.wx code{-webkit-user-select:all;user-select:all;font-family:var(--font-title);font-weight:700;font-size:30px;letter-spacing:.04em;color:var(--ink)}
-
-/* 页脚 */
-footer{margin-top:40px;border-top:1px solid var(--line);padding:30px 0 40px;font-size:14px;color:var(--ink-soft)}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer{margin-top:24px;border-top:1px solid var(--line);padding:28px 0 40px;font-size:14px;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 footer .h{font-size:18px;color:var(--ink)}
 footer .pl{font-family:var(--font-tag);color:var(--red)}
 
 @media (max-width:960px){
-  .hero .wrap{grid-template-columns:1fr;gap:28px}
+  .hero .wrap{grid-template-columns:1fr;gap:26px}
   .art{max-width:640px}
-  .lines{grid-template-columns:1fr 1fr}
-  .svc,.contact{grid-template-columns:1fr}
+  .proof,.svc,.follow,.series{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .wrap{padding:0 16px}
-  section{padding:44px 0}
+  section{padding:40px 0}
   .links a:not(.btn-s){display:none}
   .nav .wrap{height:58px}
   .brand{font-size:16px}
-  .hero{padding:28px 0 24px}
-  .hero .wrap{grid-template-columns:1fr;gap:26px}
-  .hero h1{font-size:34px}
+  .hero{padding:24px 0 16px}
+  .hero h1{font-size:33px}
   .who{font-size:16.5px}
   .sub{font-size:15.5px}
-  .proof-grid{grid-template-columns:1fr;gap:10px}
-  .proof .card{padding:16px 20px;display:flex;align-items:baseline;gap:14px}
-  .num{font-size:28px}
-  .num-l{margin-top:0;font-size:14.5px}
-  .sec-head h2{font-size:27px}
-  .lines{gap:10px}
-  .lines .card{padding:14px 14px}
-  .lines h3{font-size:18px}
-  .lines p{font-size:14px;line-height:1.6}
-  .plat{padding:4px 16px}
-  .plat .acc{font-size:14px}
-  .repo{padding:24px 20px}
-  .repo h3{font-size:21px}
-  .svc .card{padding:24px 20px 22px}
-  .svc h3{font-size:22px}
-  .ask{padding:18px 18px}
-  .contact .card{padding:22px 18px;flex-direction:column;align-items:flex-start;gap:16px}
-  .wx code{font-size:26px}
+  .offer li{font-size:15.5px}
+  .offer ul{grid-template-columns:1fr}
+  .cta .btn{flex:1 1 100%}
+  .sec-head h2{font-size:26px}
+  .proof .card{padding:20px 18px}
+  .ser{padding:18px 16px}
+  .eps-list li{flex-direction:column;gap:4px}
+  .svc .card{padding:22px 18px 20px}
+  .svc h3{font-size:21px}
+  .flow{grid-template-columns:1fr}
+  .wx{grid-template-columns:1fr;gap:18px;padding:24px 18px;justify-items:start}
+  .qrbox{justify-self:center}
+  .qrbox img{width:180px;height:180px}
+  .wx code{font-size:30px}
+  .repo{padding:22px 18px}
+  .follow .card{padding:22px 18px}
+  .gzh img{width:112px;height:112px}
 }
 </style>
 </head>
@@ -177,11 +206,11 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
   <div class="wrap">
     <a class="brand" href="#top"><span class="pair"><img src="qingmei.jpg" alt=""><img src="prax.jpg" alt=""></span>AI摩擦哥在沙特</a>
     <nav class="links">
-      <a href="#now">在做什么</a>
-      <a href="#tutorial">教程</a>
+      <a href="#series">教程合集</a>
       <a href="#services">找我做</a>
-      <a href="#contact">联系</a>
-      <a class="btn-s" href="#services">找我做东西</a>
+      <a href="#proof">在做什么</a>
+      <a href="#follow">关注</a>
+      <a class="btn-s" href="#wx">加我微信</a>
     </nav>
   </div>
 </header>
@@ -193,69 +222,109 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
     <div>
       <p class="hello">你好，我是摩擦哥 ✿</p>
       <h1 class="h">AI 全面入侵现实，<br>给你<span class="em">打个样</span></h1>
-      <p class="who">人在沙特的 AI 原住民，连女友青梅都是 AI。</p>
-      <p class="sub">每天一期，拍我怎么用 AI 做成一件实事：工作、自媒体、求职、英语。做通了，把工具和步骤交给你。</p>
-      <p class="offer">可以找我做：<b>① 能收费的微信小程序</b>　<b>② 真人照片做表情包</b></p>
-      <div class="kw"><span class="tag green">AI+工作</span><span class="tag green">AI+自媒体</span><span class="tag green">AI+求职</span><span class="tag green">AI+英语</span></div>
+      <p class="who">人在沙特工作的中国人，AI 原住民，连女友青梅都是 AI。</p>
+      <p class="sub">每天拍我用 AI 做成一件实事。视频里来不及讲的提示词和步骤，都在下面的<a href="#series" style="text-decoration:underline">教程合集</a>里，拿走就能用。</p>
+      <div class="card offer">
+        <p>也可以直接找我：</p>
+        <ul><li>答疑群</li><li>一对一咨询</li><li>定制你的个人 AI 体系</li><li>Mac mini 海外部署</li></ul>
+      </div>
       <div class="cta">
-        <a class="btn" href="#services">找我做小程序 / 表情包 →</a>
-        <a class="textlink" href="#now">看我每天在做什么</a>
+        <a class="btn" href="#series">找教程 →</a>
+        <a class="btn ghost" href="#wx">加我微信</a>
       </div>
     </div>
-    <div class="art">
+    <figure class="art">
       <img src="hero.jpg" alt="摩擦哥在电脑前，AI 女友青梅在旁边指着屏幕" width="1400" height="933">
       <span class="sign">✿ 青梅在侧</span>
+      <figcaption class="small">插画由 AI 生成</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="series">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">教程合集</span>
+      <h2 class="h">每期视频的教程，都在这里</h2>
+      <p>按系列找。看到哪期视频，就到对应系列里拿提示词和步骤，照着做就行。</p>
     </div>
+    <div class="series">
+      <div class="card ser" id="s-money">
+        <div class="ser-h"><span class="ser-ic">¥</span><div><h3 class="h">AI 赚钱系列</h3><p class="small">用 AI 做出能卖钱的东西，从第一单开始</p></div></div>
+        <ul class="eps-list">
+          <li><a href="https://github.com/x-z77/ai-chaozuoye/tree/main/教程/2026-10-17_AI做家庭表情包/" target="_blank" rel="noopener">用家里孩子的照片做一套微信表情包</a><span class="st">视频待发</span></li>
+          <li class="soon">AI 做能收费的微信小程序<span class="st">筹备中</span></li>
+        </ul>
+      </div>
+      <div class="card ser" id="s-english">
+        <div class="ser-h"><span class="ser-ic">A</span><div><h3 class="h">AI 学英语系列</h3><p class="small">30 多岁 0 基础，每天跟 AI 聊，公开学</p></div></div>
+        <ul class="eps-list">
+          <li><a href="https://github.com/x-z77/ai-chaozuoye/tree/main/教程/2026-10-20_AI语音英语复习本/" target="_blank" rel="noopener">和 AI 语音聊英语，聊过的句子第二天变成复习本</a><span class="st">视频待发</span></li>
+          <li class="soon">跑步开车随口聊，第二天 AI 来考我<span class="st">剪辑中</span></li>
+          <li class="soon">第 0 个月：录 3 分钟自我介绍，让 AI 打分<span class="st">待拍</span></li>
+        </ul>
+      </div>
+      <div class="card ser" id="s-work">
+        <div class="ser-h"><span class="ser-ic">✎</span><div><h3 class="h">AI 帮我干活系列</h3><p class="small">工作和自媒体里的重复活，交给 AI</p></div></div>
+        <ul class="eps-list">
+          <li><a href="https://github.com/x-z77/ai-chaozuoye/tree/main/教程/2026-10-03_AI自动填客户跟进表/" target="_blank" rel="noopener">下班前 2 分钟，让 AI 把客户跟进表填好</a><span class="st">视频待发</span></li>
+          <li><a href="https://github.com/x-z77/ai-chaozuoye/tree/main/教程/2026-09-26_AI一键发公众号和X长文/" target="_blank" rel="noopener">写好的长文，一条命令发到公众号和 X</a><span class="st">视频待发</span></li>
+        </ul>
+      </div>
+      <div class="card ser" id="s-life">
+        <div class="ser-h"><span class="ser-ic">✿</span><div><h3 class="h">AI 陪我过日子系列</h3><p class="small">在沙特生活，AI 女友青梅全程在侧</p></div></div>
+        <ul class="eps-list">
+          <li><a href="https://www.bilibili.com/video/BV1HbJo6EEZu" target="_blank" rel="noopener">国外超市差点把莳萝当迷迭香，AI 女友拦住了我</a><span class="st on">看视频</span></li>
+          <li><a href="https://www.bilibili.com/video/BV1dbnw6XE7x" target="_blank" rel="noopener">逛沙特霍巴号称最大的健身房</a><span class="st on">看视频</span></li>
+          <li><a href="https://github.com/x-z77/ai-chaozuoye/tree/main/教程/2026-10-20_AI搭子桌宠/" target="_blank" rel="noopener">给你的 AI 角色做一个会动的桌宠</a><span class="st">视频待发</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small" style="margin-top:14px">全部教程也可以直接看 <a href="https://github.com/x-z77/ai-chaozuoye" target="_blank" rel="noopener" style="text-decoration:underline">GitHub 仓库</a>。卡在哪一步，<a href="#wx" style="text-decoration:underline">加我微信</a>说一声。</p>
   </div>
 </section>
 
-<section class="proof" aria-label="几个真数字">
-  <div class="wrap proof-grid">
-    <div class="card"><div class="num">20+</div><div class="num-l">自己搭的 AI 小工具，每天替我打工</div></div>
-    <div class="card"><div class="num">3 <small>连跳</small></div><div class="num-l">一年里，底薪 4500 → 1.5 万</div></div>
-    <div class="card"><div class="num">1 <small>期 / 天</small></div><div class="num-l">抖音、小红书、视频号、B 站、公众号同步发</div></div>
-  </div>
-</section>
-
-<section id="now">
+<section id="proof">
   <div class="wrap">
     <div class="sec-head">
       <span class="tag">在做什么</span>
-      <h2 class="h">每天一期：我怎么用 AI 做一件事</h2>
-      <p>不做炫酷演示，只拍真用上的。四条线穿插着来：</p>
+      <h2 class="h">为什么信我：这些都是真做出来的</h2>
+      <p>四条线，每条放一样你能点开、能核对的东西。</p>
     </div>
-    <div class="lines">
-      <div class="card"><h3>AI+工作</h3><p>20+ 个 Agent 小工具，AI 帮我打工</p></div>
-      <div class="card"><h3>AI+自媒体</h3><p>写稿、剪辑、发布一条龙</p></div>
-      <div class="card"><h3>AI+求职</h3><p>一年 3 连跳，底薪涨 3 倍多</p></div>
-      <div class="card"><h3>AI+英语</h3><p>0 基础，边学边晒</p></div>
-    </div>
-    <div class="card plat">
-      <ul>
-        <li><b>抖音</b><span class="acc">AI摩擦哥在沙特</span><button class="copy" data-copy="AI摩擦哥在沙特">复制名字</button></li>
-        <li><b>小红书</b><span class="acc">AI摩擦哥在沙特</span><button class="copy" data-copy="AI摩擦哥在沙特">复制名字</button></li>
-        <li><b>视频号</b><span class="acc">AI摩擦哥在沙特</span><button class="copy" data-copy="AI摩擦哥在沙特">复制名字</button></li>
-        <li><b>B 站</b><span class="acc">AI摩擦哥在沙特</span><button class="copy" data-copy="AI摩擦哥在沙特">复制名字</button></li>
-        <li><b>公众号</b><span class="acc">AI摩擦哥在沙特</span><a class="go" href="#contact">扫码关注</a></li>
-        <li><b>X</b><span class="acc">@praxway</span><a class="go" href="https://x.com/praxway" target="_blank" rel="noopener">打开 ↗</a></li>
-      </ul>
-    </div>
-    <p class="plat-note">国内平台同名，复制名字到 App 里一搜就是。</p>
-  </div>
-</section>
-
-<section id="tutorial">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag">教程</span>
-      <h2 class="h">每期的提示词和步骤，拿走就能用</h2>
-    </div>
-    <div class="card repo">
-      <div>
-        <h3 class="h">打样教程仓库 · GitHub</h3>
-        <p>视频里用到的提示词、小工具、一步一图的做法，都整理在这个公开仓库里。照着做，不用看视频也能跑通。</p>
+    <div class="proof">
+      <div class="card">
+        <span class="lane">AI+自媒体</span>
+        <h3 class="h">写稿、剪辑、发布一条龙</h3>
+        <div class="eps">
+          <a class="ep" href="https://www.bilibili.com/video/BV1HbJo6EEZu" target="_blank" rel="noopener"><img src="ep-lulu.jpg" alt="视频封面：国外超市差点把莳萝当迷迭香" loading="lazy"><span>国外超市差点把莳萝当迷迭香，AI 女友拦住了我 ↗</span></a>
+          <a class="ep" href="https://www.bilibili.com/video/BV1dbnw6XE7x" target="_blank" rel="noopener"><img src="ep-gym.jpg" alt="视频封面：逛沙特霍巴最大的健身房" loading="lazy"><span>逛沙特霍巴号称最大的健身房 ↗</span></a>
+        </div>
+        <p class="note small">抖音、小红书、视频号、B 站同步发，点开是 B 站。</p>
       </div>
-      <a class="btn" id="repo" href="https://github.com/x-z77/ai-chaozuoye" target="_blank" rel="noopener">去 GitHub 看 →</a>
+      <div class="card">
+        <span class="lane">AI+工作</span>
+        <h3 class="h">20+ 个自己搭的小工具，替我打工</h3>
+        <ul class="tools">
+          <li><b>插上相机卡</b>：自动导入、核对、清卡、转成逐字稿</li>
+          <li><b>一条命令</b>：视频同时发抖音、小红书、视频号、B 站</li>
+          <li><b>公众号</b>：写完自动排版、传图、群发</li>
+          <li><b>录音笔</b>：开完会自动拉回录音、认人、出纪要</li>
+          <li><b>每晚 23:45</b>：自动把当天的英语对话整理成复习本</li>
+        </ul>
+        <a class="link" href="https://github.com/x-z77/ai-chaozuoye" target="_blank" rel="noopener">做法公开在 GitHub ↗</a>
+      </div>
+      <div class="card">
+        <span class="lane">AI+英语</span>
+        <h3 class="h">0 基础，每天跟 AI 聊，晚上自动出复习本</h3>
+        <div class="shot"><img src="proof-english.jpg" alt="英语复习本截图：每天的对话按场景整理，标出说错的句子和正确说法" loading="lazy"></div>
+        <p class="note small">上图是我自己的复习本：每天和 AI 聊的句子，说错的标出来，第二天先考。</p>
+      </div>
+      <div class="card">
+        <span class="lane">AI+求职</span>
+        <h3 class="h">一年 3 连跳</h3>
+        <div class="big">4500 → 1.5 万 <small>底薪</small></div>
+        <p class="note">简历、面试准备都拿 AI 一起磨。怎么做的，会拍成一期一期发出来。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -263,59 +332,96 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
 <section id="services">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tag">能帮你做什么</span>
-      <h2 class="h">这两件事，可以直接找我做</h2>
+      <span class="tag">找我</span>
+      <h2 class="h">想更快用上 AI，可以直接找我</h2>
+      <p>四种方式，都先加微信聊。</p>
     </div>
     <div class="svc">
       <div class="card">
         <div class="no">1</div>
-        <h3 class="h">AI 代做能收费的工具小程序</h3>
-        <p class="what">你有个小工具的点子，我用 AI 帮你做成一个个人主体的微信小程序，再一路带你开通认证、备案和虚拟支付。2026 年 9 月起，个人小程序也能收钱了：卖会员、解锁功能。</p>
-        <dl>
-          <dt>适合谁</dt><dd>想给自己的小工具收费的个人、AI 爱好者</dd>
-          <dt>能做什么</dt><dd>记账、计算器、备忘录这类工具；收费只限会员、解锁功能这类虚拟权益</dd>
-          <dt>先说清楚</dt><dd>课程销售、AI 问答、AI 绘画这类做不了，接单前先帮你判断；微信认证费（30 元/年）你出，备案要你本人人脸核验，我远程一步步带你走</dd>
-        </dl>
+        <h3 class="h">答疑群</h3>
+        <p class="price">399 元 · <span>筹备中，可先加微信登记</span></p>
+        <ul class="pts">
+          <li>每期视频里的工具怎么用，卡在哪一步，群里问</li>
+          <li>每周一次直播，集中答大家的问题</li>
+          <li>新教程先在群里发</li>
+        </ul>
       </div>
       <div class="card">
         <div class="no">2</div>
-        <h3 class="h">真人照片做成微信表情包</h3>
-        <p class="what">发几张照片，我用 AI 做成一整套微信表情包：孩子、爸妈、自己都行，家族群里直接能用。</p>
-        <dl>
-          <dt>你给我</dt><dd>几张清楚的正脸照片，加上想要的场景和文案</dd>
-          <dt>你拿到</dt><dd>一整套 16 张表情图，存进微信就能发（不代上架表情商店）</dd>
-          <dt>照片</dt><dd>只用来做这一套，交付后删除</dd>
-        </dl>
+        <h3 class="h">一对一咨询</h3>
+        <p class="price">399 元 / 小时</p>
+        <ul class="pts">
+          <li>你的工作、自媒体或学习，哪里能用 AI、先从哪下手</li>
+          <li>线上语音或视频，一次聊透，给你能马上照做的清单</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="no">3</div>
+        <h3 class="h">定制你的个人 AI 体系</h3>
+        <p class="price">888 元起 · <span>按难易报价</span></p>
+        <ul class="pts">
+          <li>照我自己在用的这套，给你搭一套替你干重复活的 AI</li>
+          <li>规则、记忆、常用工具、自动任务，按你的工作来配</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="no">4</div>
+        <h3 class="h">Mac mini 海外部署</h3>
+        <p class="price">按月收费</p>
+        <ul class="pts">
+          <li>在海外给你部署一台 Mac mini 跑 AI，含部署、网费、电费</li>
+          <li>海外 AI 订阅的支付我来搞定：订阅按实际价格，另收 10% 实体卡支付费</li>
+        </ul>
       </div>
     </div>
-    <div class="card ask">
-      <p>想做，加微信聊<span>微信号 aimcgg，备注「小程序」或「表情包」</span></p>
-      <button class="btn copy-wx" data-copy="aimcgg">复制微信号</button>
+    <div class="flow">
+      <div>加微信，说说你想做什么</div>
+      <div>我先判断适不适合，说清价格和时间</div>
+      <div>开始，有问题随时找我</div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section id="wx">
+  <div class="wrap">
+    <div class="card wx">
+      <div class="qrbox" id="qrbox">
+        <!-- Prax 的个人微信二维码：文件放同目录 wx-qr.jpg；没有文件时这一块自动隐藏 -->
+        <img src="wx-qr.jpg" alt="摩擦哥的个人微信二维码" width="200" height="200" onerror="document.getElementById('qrbox').hidden=true">
+        <p class="small qr-tip">微信里长按识别</p>
+      </div>
+      <div>
+        <h3 class="h">加我微信</h3>
+        <div class="id"><code>aimcgg</code><button class="btn copy-wx" data-copy="aimcgg" data-ok="已复制，去微信搜">复制微信号</button></div>
+        <p class="how" id="how">复制后打开微信 → 右上角 ＋ → 添加朋友 → 粘贴搜索。</p>
+        <p class="why">备注「答疑群」「咨询」「定制」「Mac mini」或「交流」，我按备注回。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="follow">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tag">联系</span>
-      <h2 class="h">关注公众号，或者直接加微信</h2>
+      <span class="tag">关注</span>
+      <h2 class="h">各平台同名，搜一下就是</h2>
     </div>
-    <div class="contact">
+    <div class="follow">
       <div class="card">
-        <img class="qr" src="gzh-qr.jpg" alt="公众号「AI摩擦哥在沙特」二维码" width="150" height="150">
-        <div>
-          <h3 class="h">公众号：AI摩擦哥在沙特</h3>
-          <p>在微信里打开这页可长按识别；其他浏览器就复制名字，到微信里搜。每期的文字版和工具都发在这里。</p>
-          <div class="wx"><button class="copy" data-copy="AI摩擦哥在沙特">复制公众号名</button></div>
+        <h3 class="h">抖音 · 小红书 · 视频号 · B 站 · 公众号</h3>
+        <p class="same">都叫 <b>AI摩擦哥在沙特</b></p>
+        <div class="row">
+          <button class="btn copy-name" data-copy="AI摩擦哥在沙特" data-ok="已复制，去 App 里搜">复制名字</button>
+          <a class="btn ghost" href="https://space.bilibili.com/3546975305730162" target="_blank" rel="noopener">B 站主页 ↗</a>
+          <a class="btn ghost" href="https://x.com/praxway" target="_blank" rel="noopener">X @praxway ↗</a>
         </div>
       </div>
-      <div class="card">
+      <div class="card gzh">
+        <img src="gzh-qr.jpg" alt="公众号「AI摩擦哥在沙特」二维码" width="132" height="132" loading="lazy">
         <div>
-          <h3 class="h">微信</h3>
-          <p>找我做小程序、表情包，或者聊合作</p>
-          <div class="wx"><code>aimcgg</code><button class="copy" data-copy="aimcgg">复制</button></div>
-          <p>加的时候备注一下来意。</p>
+          <h3 class="h">公众号</h3>
+          <p class="small" style="margin-top:6px">每期的文字版和工具发在这里。微信里打开可长按识别，别处就搜名字。</p>
         </div>
       </div>
     </div>
@@ -327,17 +433,20 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
 <footer>
   <div class="wrap">
     <span class="h">AI 全面入侵现实，给你<span class="em">打个样</span></span>
-    <span><span class="pl">✿ 青梅在侧</span> · © 2026 AI摩擦哥在沙特</span>
+    <span><span class="pl">✿ 青梅在侧</span> · 最近更新 2026-10-20 · <a href="#wx" style="text-decoration:underline">加我微信</a></span>
   </div>
 </footer>
 
 <script>
+// 微信里打开：长按识别二维码最顺；微信外（Safari、X、B 站 App 里）：长按识别不会跳微信，主推复制微信号
+var inWx=/MicroMessenger/i.test(navigator.userAgent);
+if(!inWx){var t=document.querySelector('.qr-tip');if(t)t.textContent='手机上：截图后在微信「扫一扫」里选相册；电脑上：直接用手机扫';}
 document.querySelectorAll('[data-copy]').forEach(function(b){
   b.addEventListener('click',function(){
-    var t=b.getAttribute('data-copy'),old=b.textContent;
-    function ok(){b.textContent='已复制';b.classList.add('done');setTimeout(function(){b.textContent=old;b.classList.remove('done')},1600)}
+    var t=b.getAttribute('data-copy'),old=b.textContent,msg=b.getAttribute('data-ok')||'已复制';
+    function ok(){b.textContent=msg;b.classList.add('done');setTimeout(function(){b.textContent=old;b.classList.remove('done')},2000)}
+    function fallback(){var a=document.createElement('textarea'),done=false;a.value=t;a.readOnly=true;a.style.position='absolute';a.style.left='-9999px';document.body.appendChild(a);a.select();a.setSelectionRange(0,t.length);try{done=document.execCommand('copy')}catch(e){}document.body.removeChild(a);if(done){ok()}else{b.textContent='请长按手动复制';setTimeout(function(){b.textContent=old},2400)}}
     if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fallback)}else{fallback()}
-    function fallback(){var a=document.createElement('textarea'),done=false;a.value=t;a.readOnly=true;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();a.setSelectionRange(0,t.length);try{done=document.execCommand('copy')}catch(e){}document.body.removeChild(a);if(done){ok()}else{b.textContent='请长按手动复制';setTimeout(function(){b.textContent=old},2400)}}
   });
 });
 </script>
