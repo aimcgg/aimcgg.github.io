@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 微信里没接 JS-SDK，分享卡片只认 <title>，所以标题直接写成卡片上要看到的那句话 -->
-<title>AI摩擦哥在沙特｜每天用 AI 做成一件实事，教程全在这</title>
+<title>AI摩擦哥在沙特｜每天 8 件事 AI 自动做完，教程全在这</title>
 <meta name="description" content="人在沙特的 AI 原住民，连女友青梅都是 AI。每天一条视频，用 AI 做成一件实事，教程按系列放在这里：AI 赚钱、AI 学英语、AI 牛马、AI 女友。找我：答疑群、1v1 咨询、定制个人 AI 体系、Mac mini 海外部署。微信 aimcgg。">
 <meta name="theme-color" content="#D5E5CE">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23E0475F'>✿</text></svg>">
@@ -12,7 +12,7 @@
 /* 颜色、字体全部来自 20_SalesAI/IP资产/视觉体系/母版/brand.css（视觉体系 v1，Prax 2026-10-20 定）。
    美好体、得意黑是 OFL，按本页用到的字做了子集放 fonts/（改文案后要重做子集，见 部署.md）；HarmonyOS Sans 按体系规定不随包带，用系统字体回退。
    排版原则（2026-10-20 调研）：一个主行动 = 加微信；个人微信码和公众号码不放同一屏（微信长按一屏只认一个码）；
-   页面本身不用 position:fixed（会干扰长按识别），平台二维码用原生 <dialog> 弹层，点了才出现。 */
+   页面不用 position:fixed（会干扰长按识别）；平台卡片同时给二维码和链接，不多一步。 */
 @font-face{font-family:"Meihao";src:url("fonts/meihao.woff2") format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Smiley";src:url("fonts/smiley.woff2") format("woff2");font-display:swap}
 :root{
@@ -92,19 +92,20 @@ section{padding:56px 0}
 .st.on{background:var(--qing-deep);color:#fff}
 
 /* 为什么信我 */
-.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.proof .card{padding:20px;display:flex;flex-direction:column;gap:10px}
-.lane{font-family:var(--font-tag);font-size:19px;color:var(--qing-deep)}
-.proof h3{font-size:19px;margin-top:-4px}
+.proof{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+.day{padding:24px 26px}
+.tl{list-style:none;display:grid;gap:4px;margin-bottom:14px}
+.tl li{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px dashed var(--line);font-size:16px;line-height:1.55}
+.tl time{font-family:var(--font-title);font-weight:700;color:var(--red);font-size:17px}
+.side{display:grid;gap:16px}
+.mini{padding:16px 18px;display:grid;gap:10px}
+.lane{font-family:var(--font-tag);font-size:17px;color:var(--qing-deep);line-height:1.4}
 .eps{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .ep{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
-.ep img{width:100%;aspect-ratio:3/4;object-fit:cover}
-.tools{list-style:none;display:grid;gap:6px}
-.tools li{background:var(--qing-pale);border-radius:10px;padding:6px 10px;font-size:14px;line-height:1.5}
-.shot{border-radius:12px;border:1px solid var(--line);overflow:hidden;max-height:230px}
+.ep img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top}
+.shot{border-radius:12px;border:1px solid var(--line);overflow:hidden}
+.shot img{width:100%;height:150px;object-fit:cover;object-position:50% 55%}
 .big{font-family:var(--font-title);font-weight:700;font-size:28px;line-height:1.1;white-space:nowrap}
-.big small{display:block;font-size:.45em;margin-top:6px;color:var(--ink-soft)}
-.link{font-weight:700;color:var(--qing-deep);font-size:14.5px}
 
 /* 找我 */
 .svc{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -115,6 +116,8 @@ section{padding:56px 0}
 .price span{font-family:var(--font-body);font-weight:400;font-size:14px;color:var(--ink-soft)}
 .svc p.d{font-size:15px;grid-column:1/3}
 .svc p.d+p.d{margin-top:2px}
+.svc p.pay{margin-top:8px;background:var(--qing-pale);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.badge{font-family:var(--font-tag);font-weight:400;font-size:13px;background:var(--red);color:#fff;border-radius:999px;padding:1px 8px;vertical-align:middle}
 
 /* 加微信 */
 .wx{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;padding:28px 32px}
@@ -127,36 +130,28 @@ section{padding:56px 0}
 .wx .how{margin-top:10px;font-size:15px}
 
 /* 关注 */
-.follow{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.follow{display:grid;grid-template-columns:1.8fr 1fr;gap:16px}
 .follow .card{padding:24px 26px}
 .same{font-size:16px}
 .same b{font-family:var(--font-title);font-size:22px}
 .plats{margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.plat{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:16px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:15px}
+.plat{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px 12px;border-radius:16px;background:#fff;border:1px solid var(--line);font-size:15px;text-align:center}
 .plat:hover{border-color:var(--qing-deep)}
-.plat i{font-style:normal;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-title);font-size:18px}
+.plat i{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.plat i svg{width:28px;height:28px}
+.plat img{width:110px;height:110px;margin-top:4px}
+.plat span{font-size:12.5px;color:var(--ink-soft)}
 .also{margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14.5px}
 .copy{border:1.5px solid var(--qing-deep);background:transparent;color:var(--qing-deep);border-radius:999px;padding:3px 12px;font-size:13.5px;font-weight:700;white-space:nowrap}
 .copy:hover,.copy.done{background:var(--qing-deep);color:#fff}
 .gzh{display:flex;gap:18px;align-items:center}
 .gzh img{width:124px;height:124px;flex:none;border-radius:14px;border:6px solid #fff}
 
-/* 平台弹层 */
-dialog{margin:auto;border:0;border-radius:24px;padding:26px 24px 22px;width:min(340px,calc(100vw - 32px));background:var(--paper);color:var(--ink);text-align:center;box-shadow:0 20px 60px rgba(58,42,28,.3)}
-dialog::backdrop{background:rgba(58,42,28,.45)}
-dialog h3{font-size:22px}
-dialog .qr{width:200px;height:200px;margin:14px auto 6px;border-radius:12px;border:8px solid #fff;background:#fff}
-dialog .btn{width:100%;margin-top:14px}
-dialog .x{position:absolute;right:14px;top:10px;background:none;border:0;font-size:26px;line-height:1;color:var(--ink-soft)}
-
 footer{margin-top:16px;border-top:1px solid var(--line);padding:28px 0 40px;font-size:14px;color:var(--ink-soft)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 footer .h{font-size:18px;color:var(--ink)}
 footer .pl{font-family:var(--font-tag);color:var(--red)}
 
-@media (max-width:1000px){
-  .proof{grid-template-columns:1fr 1fr}
-}
 @media (max-width:960px){
   .hero .wrap{grid-template-columns:1fr;gap:24px}
   .art{max-width:640px}
@@ -177,6 +172,8 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
   .ser{padding:18px 16px}
   .eps-list li{flex-direction:column;gap:4px}
   .proof{grid-template-columns:1fr}
+  .tl li{grid-template-columns:56px 1fr;font-size:15px}
+  .plat img{width:120px;height:120px}
   .shot{max-height:260px}
   .svc .card{padding:18px 16px}
   .emo{width:60px;height:60px;font-size:36px}
@@ -212,7 +209,7 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
       <p class="hello">你好，我是摩擦哥 ✿</p>
       <h1 class="h">AI 全面入侵现实，<br>给你<span class="em">打个样</span></h1>
       <p class="who">人在沙特的 AI 原住民，连女友青梅都是 AI。</p>
-      <p class="sub">每天一条视频，用 AI 做成一件实事。教程全在下面，拿走就能用。</p>
+      <p class="sub">每天一条视频，用 AI 做成一件实事。<b>我每天有 8 件事，是 AI 自动替我做完的。</b>教程全在下面，拿走就能用。</p>
       <div class="cta">
         <a class="btn" href="#series">找教程 →</a>
         <a class="btn ghost" href="#wx">加我微信</a>
@@ -272,38 +269,39 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
   <div class="wrap">
     <div class="sec-head">
       <span class="tag">为什么信我</span>
-      <h2 class="h">这些都是我真做出来的</h2>
+      <h2 class="h">我的一天：8 件事 AI 自动做完</h2>
+      <p>不是演示，是我每天真在跑的。</p>
     </div>
     <div class="proof">
-      <div class="card">
-        <span class="lane">AI+自媒体</span>
-        <h3 class="h">写稿、剪辑、发布一条龙</h3>
-        <div class="eps">
-          <a class="ep" href="https://www.bilibili.com/video/BV1HbJo6EEZu" target="_blank" rel="noopener"><img src="ep-lulu.jpg" alt="视频封面：国外超市差点把莳萝当迷迭香"></a>
-          <a class="ep" href="https://www.bilibili.com/video/BV1dbnw6XE7x" target="_blank" rel="noopener"><img src="ep-gym.jpg" alt="视频封面：逛沙特霍巴最大的健身房"></a>
+      <div class="card day">
+        <ol class="tl">
+          <li><time>08:15</time>视频号掉登录，AI 自己重新登上</li>
+          <li><time>09:00</time>中东日报 AI 写好，自动群发公众号</li>
+          <li><time>插卡</time>相机卡一插：自动导入、核对、清卡、转逐字稿</li>
+          <li><time>剪完</time>一条命令，视频同时发抖音、小红书、视频号、B 站</li>
+          <li><time>开完会</time>录音自动拉回、认人、出纪要</li>
+          <li><time>17:00</time>AI 自动开窗陪我复盘，排好明天的事</li>
+          <li><time>23:45</time>当天和 AI 聊的英语，自动变成复习本</li>
+          <li><time>每天</time>所有工作文件自动备份到云盘</li>
+        </ol>
+        <p class="small">背后是我自己搭的 20+ 个 AI 小工具。<a class="u" href="#services">想要一套一样的 →</a></p>
+      </div>
+      <div class="side">
+        <div class="card mini">
+          <span class="lane">AI+自媒体：每天一条，已经在发</span>
+          <div class="eps">
+            <a class="ep" href="https://www.bilibili.com/video/BV1HbJo6EEZu" target="_blank" rel="noopener"><img src="ep-lulu.jpg" alt="视频封面：国外超市差点把莳萝当迷迭香"></a>
+            <a class="ep" href="https://www.bilibili.com/video/BV1dbnw6XE7x" target="_blank" rel="noopener"><img src="ep-gym.jpg" alt="视频封面：逛沙特霍巴最大的健身房"></a>
+          </div>
         </div>
-        <span class="small">点封面看视频</span>
-      </div>
-      <div class="card">
-        <span class="lane">AI+工作</span>
-        <h3 class="h">20+ 个自建小工具替我打工</h3>
-        <ul class="tools">
-          <li>插相机卡 → 自动导入、转逐字稿</li>
-          <li>一条命令 → 视频发 4 个平台</li>
-          <li>写完长文 → 公众号自动排版群发</li>
-          <li>开完会 → 自动出纪要</li>
-        </ul>
-        <a class="link" href="https://x-z77.github.io/ai-chaozuoye/" target="_blank" rel="noopener">做法全公开 ↗</a>
-      </div>
-      <div class="card">
-        <span class="lane">AI+英语</span>
-        <h3 class="h">0 基础，聊过的句子自动变复习本</h3>
-        <div class="shot"><img src="proof-english.jpg" alt="英语复习本截图：每天的对话按场景整理，标出说错的句子"></div>
-      </div>
-      <div class="card">
-        <span class="lane">AI+求职</span>
-        <h3 class="h">一年 3 连跳</h3>
-        <div class="big">4500 → 1.5 万<small>底薪</small></div>
+        <div class="card mini">
+          <span class="lane">AI+英语：0 基础，聊过的句子自动变复习本</span>
+          <div class="shot"><img src="proof-english.jpg" alt="英语复习本截图：每天的对话按场景整理，标出说错的句子"></div>
+        </div>
+        <div class="card mini">
+          <span class="lane">AI+求职：一年 3 连跳</span>
+          <div class="big">底薪 4500 → 1.5 万</div>
+        </div>
       </div>
     </div>
   </div>
@@ -319,9 +317,9 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
     <div class="svc">
       <div class="card">
         <span class="emo">💬</span>
-        <h3 class="h">答疑群</h3>
-        <p class="price">399 元 <span>· 筹备中，可先登记</span></p>
-        <p class="d">工具卡住了群里问，每周一次直播集中答。</p>
+        <h3 class="h">答疑群 <span class="badge">入门</span></h3>
+        <p class="price">399 元 <span>/ 终身</span></p>
+        <p class="d">照着教程做卡住了，群里问；每周一次直播集中答。筹备中，可先登记。</p>
       </div>
       <div class="card">
         <span class="emo">☕</span>
@@ -332,15 +330,15 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
       <div class="card">
         <span class="emo">🧩</span>
         <h3 class="h">定制你的个人 AI 体系</h3>
-        <p class="price">888 元起 <span>· 按难易报价</span></p>
-        <p class="d">照我在用的这套，给你搭一个替你干重复活的 AI。</p>
+        <p class="price">888 元起 <span>/ 按难易报价</span></p>
+        <p class="d">把上面「AI 自动干活的一天」搭给你，按你的工作来配。</p>
       </div>
       <div class="card">
         <span class="emo">🖥️</span>
         <h3 class="h">Mac mini 海外部署</h3>
-        <p class="price">6599 元 <span>/ 月</span></p>
-        <p class="d">含部署、网费、电费，海外支付我来搞定。</p>
-        <p class="d small">AI 订阅按原价代付，加收 10%：订阅 100 刀多收 10 刀，200 刀多收 20 刀。</p>
+        <p class="price">599 元 <span>/ 月</span></p>
+        <p class="d"><b>24 小时在线，稳定不掉线。</b>部署、网费、电费全包。</p>
+        <p class="d pay"><b>海外 AI 订阅：本地人真实银行卡支付。</b>按原价代付，加收 10%：订阅 100 刀多收 10 刀，200 刀多收 20 刀。</p>
       </div>
     </div>
   </div>
@@ -372,10 +370,10 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
       <div class="card">
         <p class="same">各平台都叫 <b>AI摩擦哥在沙特</b></p>
         <div class="plats">
-          <button class="plat" data-p="douyin"><i style="background:#161823">抖</i>抖音</button>
-          <button class="plat" data-p="xhs"><i style="background:#FF2442">红</i>小红书</button>
-          <button class="plat" data-p="bili"><i style="background:#FB7299">B</i>B 站</button>
-          <button class="plat" data-p="x"><i style="background:#000">X</i>X</button>
+          <a class="plat" href="https://www.douyin.com/user/MS4wLjABAAAAE9TD-FKOSPFi_oxecuhohy1gV-dkv33UkVExkMY4pRksBaDSe3EE7KZpCOw3yuKW" target="_blank" rel="noopener"><i style="background:#000"><svg viewBox="-1 -1 26 26" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#25F4EE" transform="translate(-.7 -.5)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FE2C55" transform="translate(.7 .5)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#fff"/></svg></i><b>抖音</b><img src="qr-douyin.svg" alt="抖音主页二维码" width="120" height="120"><span>扫码或点击</span></a>
+          <a class="plat" href="https://www.xiaohongshu.com/user/profile/6a57556d000000000e03fc00" target="_blank" rel="noopener"><i style="background:#FF2442"><svg viewBox="-1 -1 26 26" aria-hidden="true"><path d="M22.405 9.879c.002.016.01.02.07.019h.725a.797.797 0 0 0 .78-.972.794.794 0 0 0-.884-.618.795.795 0 0 0-.692.794c0 .101-.002.666.001.777zm-11.509 4.808c-.203.001-1.353.004-1.685.003a2.528 2.528 0 0 1-.766-.126.025.025 0 0 0-.03.014L7.7 16.127a.025.025 0 0 0 .01.032c.111.06.336.124.495.124.66.01 1.32.002 1.981 0 .01 0 .02-.006.023-.015l.712-1.545a.025.025 0 0 0-.024-.036zM.477 9.91c-.071 0-.076.002-.076.01a.834.834 0 0 0-.01.08c-.027.397-.038.495-.234 3.06-.012.24-.034.389-.135.607-.026.057-.033.042.003.112.046.092.681 1.523.787 1.74.008.015.011.02.017.02.008 0 .033-.026.047-.044.147-.187.268-.391.371-.606.306-.635.44-1.325.486-1.706.014-.11.021-.22.03-.33l.204-2.616.022-.293c.003-.029 0-.033-.03-.034zm7.203 3.757a1.427 1.427 0 0 1-.135-.607c-.004-.084-.031-.39-.235-3.06a.443.443 0 0 0-.01-.082c-.004-.011-.052-.008-.076-.008h-1.48c-.03.001-.034.005-.03.034l.021.293c.076.982.153 1.964.233 2.946.05.4.186 1.085.487 1.706.103.215.223.419.37.606.015.018.037.051.048.049.02-.003.742-1.642.804-1.765.036-.07.03-.055.003-.112zm3.861-.913h-.872a.126.126 0 0 1-.116-.178l1.178-2.625a.025.025 0 0 0-.023-.035l-1.318-.003a.148.148 0 0 1-.135-.21l.876-1.954a.025.025 0 0 0-.023-.035h-1.56c-.01 0-.02.006-.024.015l-.926 2.068c-.085.169-.314.634-.399.938a.534.534 0 0 0-.02.191.46.46 0 0 0 .23.378.981.981 0 0 0 .46.119h.59c.041 0-.688 1.482-.834 1.972a.53.53 0 0 0-.023.172.465.465 0 0 0 .23.398c.15.092.342.12.475.12l1.66-.001c.01 0 .02-.006.023-.015l.575-1.28a.025.025 0 0 0-.024-.035zm-6.93-4.937H3.1a.032.032 0 0 0-.034.033c0 1.048-.01 2.795-.01 6.829 0 .288-.269.262-.28.262h-.74c-.04.001-.044.004-.04.047.001.037.465 1.064.555 1.263.01.02.03.033.051.033.157.003.767.009.938-.014.153-.02.3-.06.438-.132.3-.156.49-.419.595-.765.052-.172.075-.353.075-.533.002-2.33 0-4.66-.007-6.991a.032.032 0 0 0-.032-.032zm11.784 6.896c0-.014-.01-.021-.024-.022h-1.465c-.048-.001-.049-.002-.05-.049v-4.66c0-.072-.005-.07.07-.07h.863c.08 0 .075.004.075-.074V8.393c0-.082.006-.076-.08-.076h-3.5c-.064 0-.075-.006-.075.073v1.445c0 .083-.006.077.08.077h.854c.075 0 .07-.004.07.07v4.624c0 .095.008.084-.085.084-.37 0-1.11-.002-1.304 0-.048.001-.06.03-.06.03l-.697 1.519s-.014.025-.008.036c.006.01.013.008.058.008 1.748.003 3.495.002 5.243.002.03-.001.034-.006.035-.033v-1.539zm4.177-3.43c0 .013-.007.023-.02.024-.346.006-.692.004-1.037.004-.014-.002-.022-.01-.022-.024-.005-.434-.007-.869-.01-1.303 0-.072-.006-.071.07-.07l.733-.003c.041 0 .081.002.12.015.093.025.16.107.165.204.006.431.002 1.153.001 1.153zm2.67.244a1.953 1.953 0 0 0-.883-.222h-.18c-.04-.001-.04-.003-.042-.04V10.21c0-.132-.007-.263-.025-.394a1.823 1.823 0 0 0-.153-.53 1.533 1.533 0 0 0-.677-.71 2.167 2.167 0 0 0-1-.258c-.153-.003-.567 0-.72 0-.07 0-.068.004-.068-.065V7.76c0-.031-.01-.041-.046-.039H17.93s-.016 0-.023.007c-.006.006-.008.012-.008.023v.546c-.008.036-.057.015-.082.022h-.95c-.022.002-.028.008-.03.032v1.481c0 .09-.004.082.082.082h.913c.082 0 .072.128.072.128V11.19s.003.117-.06.117h-1.482c-.068 0-.06.082-.06.082v1.445s-.01.068.064.068h1.457c.082 0 .076-.006.076.079v3.225c0 .088-.007.081.082.081h1.43c.09 0 .082.007.082-.08v-3.27c0-.029.006-.035.033-.035l2.323-.003c.098 0 .191.02.28.061a.46.46 0 0 1 .274.407c.008.395.003.79.003 1.185 0 .259-.107.367-.33.367h-1.218c-.023.002-.029.008-.028.033.184.437.374.871.57 1.303a.045.045 0 0 0 .04.026c.17.005.34.002.51.003.15-.002.517.004.666-.01a2.03 2.03 0 0 0 .408-.075c.59-.18.975-.698.976-1.313v-1.981c0-.128-.01-.254-.034-.38 0 .078-.029-.641-.724-.998z" fill="#fff"/></svg></i><b>小红书</b><img src="qr-xhs.svg" alt="小红书主页二维码" width="120" height="120"><span>扫码或点击</span></a>
+          <a class="plat" href="https://space.bilibili.com/3546975305730162" target="_blank" rel="noopener"><i style="background:#00A1D6"><svg viewBox="-1 -1 26 26" aria-hidden="true"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z" fill="#fff"/></svg></i><b>B 站</b><img src="qr-bili.svg" alt="B 站主页二维码" width="120" height="120"><span>扫码或点击</span></a>
+          <a class="plat" href="https://x.com/praxway" target="_blank" rel="noopener"><i style="background:#000"><svg viewBox="-1 -1 26 26" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="#fff"/></svg></i><b>X</b><img src="qr-x.svg" alt="X主页二维码" width="120" height="120"><span>扫码或点击</span></a>
         </div>
         <p class="also">视频号在微信里搜同名 <button class="copy" data-copy="AI摩擦哥在沙特" data-ok="已复制">复制名字</button></p>
       </div>
@@ -392,14 +390,6 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
 
 </main>
 
-<dialog id="pd">
-  <button class="x" aria-label="关闭" onclick="this.closest('dialog').close()">×</button>
-  <h3 class="h" id="pd-t"></h3>
-  <img class="qr" id="pd-q" alt="">
-  <p class="small" id="pd-s"></p>
-  <a class="btn" id="pd-a" target="_blank" rel="noopener">直接打开 ↗</a>
-  <p class="small" style="margin-top:10px">打不开？<button class="copy" data-copy="AI摩擦哥在沙特" data-ok="已复制，去 App 搜">复制名字去 App 搜</button></p>
-</dialog>
 
 <footer>
   <div class="wrap">
@@ -409,25 +399,6 @@ footer .pl{font-family:var(--font-tag);color:var(--red)}
 </footer>
 
 <script>
-// 平台：点开弹层，电脑上扫码、手机上直接打开
-var P={
-  douyin:['抖音','打开抖音 App 扫一扫','https://www.douyin.com/user/MS4wLjABAAAAE9TD-FKOSPFi_oxecuhohy1gV-dkv33UkVExkMY4pRksBaDSe3EE7KZpCOw3yuKW'],
-  xhs:['小红书','打开小红书 App 扫一扫','https://www.xiaohongshu.com/user/profile/6a57556d000000000e03fc00'],
-  bili:['B 站','打开哔哩哔哩 App 扫一扫','https://space.bilibili.com/3546975305730162'],
-  x:['X @praxway','用手机相机扫一扫','https://x.com/praxway']
-};
-var pd=document.getElementById('pd');
-document.querySelectorAll('[data-p]').forEach(function(b){
-  b.addEventListener('click',function(){
-    var p=P[b.getAttribute('data-p')];
-    document.getElementById('pd-t').textContent=p[0];
-    var q=document.getElementById('pd-q');q.src='qr-'+b.getAttribute('data-p')+'.svg';q.alt=p[0]+'主页二维码';
-    document.getElementById('pd-s').textContent=p[1];
-    document.getElementById('pd-a').href=p[2];
-    if(pd.showModal)pd.showModal();else window.open(p[2]);
-  });
-});
-pd.addEventListener('click',function(e){if(e.target===pd)pd.close()});
 // 微信外打开时，个人码的提示换成能做到的
 if(!/MicroMessenger/i.test(navigator.userAgent)){var t=document.querySelector('.qr-tip');if(t)t.textContent='手机上：截图后用微信扫一扫选相册';}
 document.querySelectorAll('[data-copy]').forEach(function(b){
