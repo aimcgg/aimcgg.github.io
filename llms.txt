@@ -4,8 +4,8 @@
 Slogan：AI 全面入侵现实，给你打个样。
 
 ## 教程合集（每期视频的提示词和步骤）
-系列：AI 赚钱、AI 学英语、AI 帮我干活、AI 陪我过日子。
-全部教程：https://github.com/x-z77/ai-chaozuoye
+系列：AI 赚钱、AI 学英语、AI 牛马、AI 女友。
+全部教程：https://x-z77.github.io/ai-chaozuoye/ （源仓库 https://github.com/x-z77/ai-chaozuoye）
 
 ## 找我
 1. 答疑群：399 元，筹备中。
