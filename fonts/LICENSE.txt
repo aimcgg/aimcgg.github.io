@@ -1,0 +1,4 @@
+本目录字体为按页面用字裁剪的子集，均以 SIL Open Font License 1.1 发布：
+- meihao.woff2：抖音美好体（Douyin Meihao Ti），© 抖音
+- smiley.woff2：得意黑（Smiley Sans），© atelierAnchor，https://github.com/atelier-anchor/smiley-sans
+许可全文：https://openfontlicense.org/open-font-license-official-text/
